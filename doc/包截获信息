@@ -1,0 +1,40 @@
+#---------------登录包信息--------------------------------
+POST /online/setpoint HTTP/1.1
+Host: task.browser.360.cn 
+
+Content-Length: 355
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36 QIHU 360SE
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: __huid=114XdvuMycYQseazaKb07Ppr5v95IDuzCowkz+r22lD+8=; __guid=132730903.4600545444497402000.1512607246103.6362; __gid=82115999.620982165.1520210118464.1520210118518.3; Q=u%3Dzn6304654%26n%3D%26le%3DZmDlAmRmZGp0WGDjpKRhL29g%26m%3D%26qid%3D47402726%26im%3D1_t01955c86392e8be16f%26src%3D360se%26t%3D1; T=s%3D2a98e0c9d331425f6cad0dad58b812b9%26t%3D1519627538%26lm%3D%26lf%3D4%26sk%3D91d849c612556cbd8d854c5ea816cb70%26mt%3D1519627538%26rc%3D%26v%3D2.0%26a%3D1
+Connection: close
+
+stamp=1521790046&qt=Q%3Du%3Dzn6304654%26n%3D%26le%3DZmDlAmRmZGp0WGDjpKRhL29g%26m%3D%26qid%3D47402726%26im%3D1_t01955c86392e8be16f%26src%3D360se%26t%3D1%0D%0AT%3Ds%3D2a98e0c9d331425f6cad0dad58b812b9%26t%3D1519627538%26lm%3D%26lf%3D4%26sk%3D91d849c612556cbd8d854c5ea816cb70%26mt%3D1519627538%26rc%3D%26v%3D2.0%26a%3D1&verify=f8e39ad96bad23c47285fcde3167bdaf
+
+
+#--------------点赞信息包-----------------------------------
+POST /online/setpoint HTTP/1.1
+Host: task.browser.360.cn 
+
+Content-Length: 355
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36 QIHU 360SE
+Accept-Language: zh-CN,zh;q=0.8
+Cookie: __huid=114XdvuMycYQseazaKb07Ppr5v95IDuzCowkz+r22lD+8=; __guid=132730903.4600545444497402000.1512607246103.6362; __gid=82115999.620982165.1520210118464.1520210118518.3; Q=u%3Dzn6304654%26n%3D%26le%3DZmDlAmRmZGp0WGDjpKRhL29g%26m%3D%26qid%3D47402726%26im%3D1_t01955c86392e8be16f%26src%3D360se%26t%3D1; T=s%3D2a98e0c9d331425f6cad0dad58b812b9%26t%3D1519627538%26lm%3D%26lf%3D4%26sk%3D91d849c612556cbd8d854c5ea816cb70%26mt%3D1519627538%26rc%3D%26v%3D2.0%26a%3D1
+Connection: close
+
+stamp=1521788846&qt=Q%3Du%3Dzn6304654%26n%3D%26le%3DZmDlAmRmZGp0WGDjpKRhL29g%26m%3D%26qid%3D47402726%26im%3D1_t01955c86392e8be16f%26src%3D360se%26t%3D1%0D%0AT%3Ds%3D2a98e0c9d331425f6cad0dad58b812b9%26t%3D1519627538%26lm%3D%26lf%3D4%26sk%3D91d849c612556cbd8d854c5ea816cb70%26mt%3D1519627538%26rc%3D%26v%3D2.0%26a%3D1&verify=0f6f3941756a989eb11494c4839f51de
+
+##-----点赞反馈信息-------
+HTTP/1.1 200 OK
+Server: nginx/1.6.3
+Date: Fri, 23 Mar 2018 07:07:33 GMT
+Content-Type: textml; charset=utf-8
+Connection: close
+Content-Length: 63
+
+{"errno":"0","errmsg":"success","lastpoint":"2018-03-23-15-07"}
+
+
+
+

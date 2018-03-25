@@ -26,8 +26,9 @@ public abstract class HttpService implements Serializable{
 	public static final String PHONE_AGENT = 
 			"Mozilla/5.0 (Linux; U; Android 0.5; en-us) AppleWebKit/522+ (KHTML, like Gecko) Safari/419.3";
 	/** 默认电脑浏览器 */
+	
 	public static final String CONPUTER_AGENT = 
-			"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0";
+			"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36 QIHU 360SE";
 	
 	/** 编码方式 */
 	protected String charset="UTF-8";
@@ -44,13 +45,13 @@ public abstract class HttpService implements Serializable{
 	 * 一个HTTP请求，包括该对象的 proxy属性，cookie属性，userAgent属性<br>
 	 * <ul>
 	 * <li>1.默认发送该对象的{@link #cookie Cookie}。</li>
-	 * <li>2.默认保存从服务器接手到的{@link #cookie Cookie}</li>
+	 * <li>2.默认保存从服务器接收到的{@link #cookie Cookie}</li>
 	 * <li>3.默认使用该对象的{@link #proxy 代理}，若没有{@link #proxy 代理}，则直接请求</li>
 	 * <li>4.默认使用该对象，通过{{@link #userAgent}指定的浏览器</li>
 	 * <ul>
 	 * @param urlStr  请求地址
 	 * @param type    请求类型 "post","get",默认"get"
-	 * @param sc      
+	 * @param sc
 	 * @param params  请求参数，Post方法才会使用
 	 * @param userAgent 指定浏览器参数
 	 * 

@@ -9,10 +9,10 @@ import com.web.bihu.util.Util;
 
 /**
  *
- * Bihuå®ä½“æ¨¡å‹
- * ç”¨äºç™»å½•ï¼ŒåŠæè¿°Bihuç”¨æˆ·ä¿¡æ¯
+ * BihuÊµÌåÄ£ĞÍ
+ * ÓÃÓÚµÇÂ¼£¬¼°ÃèÊöBihuÓÃ»§ĞÅÏ¢
  *
- * @name         Bihuç±»å
+ * @name         BihuÀàÃû
  * @author       Wolkin
  * @createtTime  2018-03-21
  * @version      1.0
@@ -20,32 +20,32 @@ import com.web.bihu.util.Util;
  *
  */
 public class Bihu extends HttpService{
-	/** Bihuå¸å· **/
+	/** BihuÕÊºÅ **/
 	private String uin;
 	
-	/** Bihuå¯†ç  **/
+	/** BihuÃÜÂë **/
 	private String password;
 	
 	/** QQ-ID **/
 	private String aid;
-	/** ç™»å½•éªŒè¯å­—ç¬¦ä¸² **/
+	/** µÇÂ¼ÑéÖ¤×Ö·û´® **/
 	private String login_sig;
-	/** ç™»å½•çŠ¶æ€ 0=ç™»å½•æˆåŠŸï¼Œå¦åˆ™å¤±è´¥**/
+	/** µÇÂ¼×´Ì¬ 0=µÇÂ¼³É¹¦£¬·ñÔòÊ§°Ü**/
 	private int status;
-	/** éªŒè¯ç  **/
+	/** ÑéÖ¤Âë **/
 	private String verify;
-	/** éšæœºæ•° **/
+	/** Ëæ»úÊı **/
 	private String random;
-	/** QQç©ºé—´è¯·æ±‚çš„G_TK**/
+	/** QQ¿Õ¼äÇëÇóµÄG_TK**/
 	protected String g_tk;
 	
 	/**
-	 * ç©ºæ„é€ å‡½æ•°
+	 * ¿Õ¹¹Ôìº¯Êı
 	 */
 	public Bihu(){}
 	
 	/**
-	 * åˆå§‹åŒ–è´¦å·å’Œå¯†ç æ„é€ å‡½æ•°
+	 * ³õÊ¼»¯ÕËºÅºÍÃÜÂë¹¹Ôìº¯Êı
 	 * @param uin
 	 * @param password
 	 */
@@ -55,37 +55,41 @@ public class Bihu extends HttpService{
 	}
 	
 	/**
-	 * Bihuç™»å½•
+	 * BihuµÇÂ¼
 	 * 
-	 * å‰æéœ€è¦æ•°æ®
-	 *      1. uin       Bihuè´¦å·
-	 *      2. password  Bihuå¯†ç 
+	 * Ç°ÌáĞèÒªÊı¾İ
+	 *      1. uin       BihuÕËºÅ
+	 *      2. password  BihuÃÜÂë
 	 *      
-	 * å±€é™ï¼š
-	 *      æš‚æ—¶ä¸æ”¯æŒè¾“å…¥éªŒè¯ç ç™»å½•
+	 * ¾ÖÏŞ£º
+	 *      ÔİÊ±²»Ö§³ÖÊäÈëÑéÖ¤ÂëµÇÂ¼
 	 * 
-	 * 1.è¿›å…¥ç™»å½•é¡µé¢
-	 * 2.åœ¨è¯¥é¡µé¢æˆªå–     1.aid 2.js_ver 3.login_sig
-	 * 3.è·å–ç™»å½•éªŒè¯ä¿¡æ¯
-	 * 4.ç™»å½•
+	 * 1.½øÈëµÇÂ¼Ò³Ãæ
+	 * 2.ÔÚ¸ÃÒ³Ãæ½ØÈ¡     1.aid 2.js_ver 3.login_sig
+	 * 3.»ñÈ¡µÇÂ¼ÑéÖ¤ĞÅÏ¢
+	 * 4.µÇÂ¼
 	 * 
-	 * @return æ˜¯å¦ç™»å½•æˆåŠŸ  ç™»å½•æˆåŠŸ=0  å¦åˆ™=-1
+	 * @return ÊÇ·ñµÇÂ¼³É¹¦  µÇÂ¼³É¹¦=0  ·ñÔò=-1
 	 * 
-	 * @see util.RegexUtil    è§£æç½‘é¡µå­—ç¬¦ä¸²
-	 * @see util.Util         ç”¨äºå¡«å……å­—ç¬¦ä¸²å·¥å…·
-	 * @see util.Security     QQå¯†ç åŠ å¯†
+	 * @see util.RegexUtil    ½âÎöÍøÒ³×Ö·û´®
+	 * @see util.Util         ÓÃÓÚÌî³ä×Ö·û´®¹¤¾ß
+	 * @see util.Security     QQÃÜÂë¼ÓÃÜ
 	 * 
 	 */
 	public int login(){
-        //1.è¿›å…¥ç™»å½•é¡µé¢,è·å–Cookie
+        //1.½øÈëµÇÂ¼Ò³Ãæ,»ñÈ¡Cookie
         //http://ui.ptlogin2.qq.com/cgi-bin/login?hide_title_bar=1&low_login=0&qlogin_auto_login=1&no_verifyimg=1&link_target=blank&appid=549000912&style=12&target=self&s_url=http%3A//qzs.qq.com/qzone/v5/loginsucc.html?para=izone&pt_qr_app=%CA%D6%BB%FAQQ%BF%D5%BC%E4&pt_qr_link=http%3A//z.qzone.com/download.html&self_regurl=http%3A//qzs.qq.com/qzone/v6/reg/index.html&pt_qr_help_link=http%3A//z.qzone.com/download.html
-		String $a = "https://www.bihu.com";
+		String $a = "https://www.bihu.com/login";
 		String $v = this.requestGet($a);
 		String content = $v;
 		
-		//2.åœ¨è¯¥é¡µé¢æˆªå–  1.aid 2.js_ver 3.login_sig
+		System.out.println("$v1 : " + $v);
+		
+		//2.ÔÚ¸ÃÒ³Ãæ½ØÈ¡  1.aid 2.js_ver 3.login_sig
         $v = RegexUtil.replaceStartEnd($v, "login_sig", "clientip");
         $v = RegexUtil.replaceStartEnd($v, "\"", "\"");
+        System.out.println("$v2 : " + $v);
+        
         String $login_sig = $v;
         
         $v = content;
@@ -95,47 +99,48 @@ public class Bihu extends HttpService{
         String $uin = this.uin;
         String $password = this.password;
 
-        //3.è·å–ç™»å½•éªŒè¯ä¿¡æ¯
+        //3.»ñÈ¡µÇÂ¼ÑéÖ¤ĞÅÏ¢
         //http://check.ptlogin2.qq.com/check?regmaster=&uin=949102845&appid=549000912&js_ver=10051&js_type=1&login_sig=UcU**IJ7*Tb1oqFs9-NzQ7p187P4QhmPafwtJz5JE4zMXU1mnab0L5Z6uhEeSR4d&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&r=0.6652378559988166
-        String $url = "http://check.ptlogin2.qq.com/check?regmaster=&uin={0}&appid={1}&js_ver={2}&js_type=1&login_sig={3}&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&r={4}";
+        String $url = "https://www.bihu.com?regmaster=&uin={0}&appid={1}&js_ver={2}&js_type=1&login_sig={3}&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&r={4}";
         $url = Util.fillString($url, $uin, $aid,"10051",$login_sig,new Random().nextDouble()+"");
-
+        System.out.println("$url : " + $url);
+        
         $v = this.requestGet($url);
         String $status = RegexUtil.replaceStartEnd($v, "'", "'");
         String $verify = RegexUtil.replaceStartEnd($v, ",'", "'");
         String $hexqq = RegexUtil.replaceStartEnd($v, ",'\\\\x", "'");
         
-		//å¦‚æœæœ‰éªŒè¯ç ï¼Œä¸€å®šè¦åœ¨å¯†ç åŠ å¯†å‰æå®šå“Ÿ
+		//Èç¹ûÓĞÑéÖ¤Âë£¬Ò»¶¨ÒªÔÚÃÜÂë¼ÓÃÜÇ°¸ã¶¨Ó´
 		if($verify.length()>5){
-			System.out.println("è¯·è¿›å…¥"+Util.root+"\\verifyTemp\\verify.jpg"+"æŸ¥çœ‹éªŒè¯ç ï¼Œä¸”åœ¨æ§åˆ¶å°è¾“å…¥éªŒè¯ç â†’å›è½¦");
+			System.out.println("Çë½øÈë"+Util.root+"\\verifyTemp\\verify.jpg"+"²é¿´ÑéÖ¤Âë£¬ÇÒÔÚ¿ØÖÆÌ¨ÊäÈëÑéÖ¤Âë¡ú»Ø³µ");
         	$url = "http://captcha.qq.com/getimage?uin={0}&aid={1}&{2}";
         	$url = Util.fillString($url, $uin, $aid, new Random().nextDouble()+"");
         	this.requestDownload($url, Util.root+"\\verifyTemp\\verify.jpg");
-        	//ä¸è§£é‡Šï¼Œæ§åˆ¶å°è¾“å…¥éªŒè¯ç ï¼Œçªç„¶æ„Ÿè§‰è‡ªå·±å¥½æ°´ã€‚ã€‚ã€‚è¯åˆè¯´å›æ¥ï¼Œå¦‚æœä½¿ç”¨B/Sæ¶æ„ï¼Œè¿™é‡Œè¿˜è¦é‡æ„ã€‚ã€‚é¢ï¼Œå¥½å§ã€‚ã€‚ã€‚
+        	//²»½âÊÍ£¬¿ØÖÆÌ¨ÊäÈëÑéÖ¤Âë£¬Í»È»¸Ğ¾õ×Ô¼ººÃË®¡£¡£¡£»°ÓÖËµ»ØÀ´£¬Èç¹ûÊ¹ÓÃB/S¼Ü¹¹£¬ÕâÀï»¹ÒªÖØ¹¹¡£¡£¶î£¬ºÃ°É¡£¡£¡£
     		Scanner scanner = new Scanner(System.in);
     		$verify = scanner.nextLine();
         }
-        //è·å–åŠ å¯†åçš„å¯†ç 
+        //»ñÈ¡¼ÓÃÜºóµÄÃÜÂë
 		$password = Security.GetPassword($hexqq,$password,$verify);
         
-        //4.ç™»å½•
+        //4.µÇÂ¼
         //URL=http://ptlogin2.qq.com/login?u=8888888&p=3E8CDBE584C125C4A0E31CB3A273FA20&verifycode=zkyy&aid=549000912&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&h=1&ptredirect=0&ptlang=2052&from_ui=1&dumy=&low_login_enable=0&regmaster=&fp=loginerroralert&action=23-61-1383187338922&mibao_css=&t=1&g=1&js_ver=10051&js_type=1&login_sig=nO84d8jFFX2BsoUJjCz2Or3qHRlCB6DsLq5r*eLHFZ3yfd5lqugnE9H4d6xkEMWI&pt_rsa=0
         $url = "http://ptlogin2.qq.com/login?u={0}&p={1}&verifycode={2}&aid={3}&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&h=1&ptredirect=0&ptlang=2052&from_ui=1&dumy=&low_login_enable=0&regmaster=&fp=loginerroralert&action=10-33-1383187964077&mibao_css=&t=1&g=1&js_ver={4}&js_type=1&login_sig={5}&pt_rsa=0";
         $url = Util.fillString($url, $uin, $password, $verify, $aid, "10051", $login_sig);
     	$v = this.requestGet($url);
     	
     	$status = RegexUtil.replaceStartEnd($v, "'", "'");
-    	System.out.println($v);//æ‰“å°çœ‹ä¸‹æ˜¯å¦æå®šäº†
+    	System.out.println($v);//´òÓ¡¿´ÏÂÊÇ·ñ¸ã¶¨ÁË
     	
-    	//5.çŸ«æ­£QQçš„Cookieï¼Œåªæå–å…³é”®éœ€è¦Cookie
+    	//5.½ÃÕıQQµÄCookie£¬Ö»ÌáÈ¡¹Ø¼üĞèÒªCookie
 		String cookie = this.cookie;
 		$v = "uin=o0"+this.uin+"; "+("skey="+RegexUtil.replaceStartEnd(cookie, "skey=", ";")+"; ptcz="+RegexUtil.replaceStartEnd(cookie, "ptcz=", ";")+";");
 		this.setCookie($v);
     	
-		//è®¾ç½®QQç©ºé—´çš„g_tk
+		//ÉèÖÃQQ¿Õ¼äµÄg_tk
 		this.g_tk = Security.GetG_TK( RegexUtil.replaceStartEnd(this.getCookie(), "skey=", ";") );
 		
-		//6.è®¾ç½®ç™»å½•çŠ¶æ€
+		//6.ÉèÖÃµÇÂ¼×´Ì¬
 		if("0".equals($status))
     		this.status = 0;
     	else
@@ -145,13 +150,13 @@ public class Bihu extends HttpService{
 	}
 	
 	/**
-	 * é€šè¿‡è¯´è¯´ID
-	 * èµä¸€ä¸ªè¯´è¯´
+	 * Í¨¹ıËµËµID
+	 * ÔŞÒ»¸öËµËµ
 	 * 
-	 * 1.éœ€è¦ç™»å½•çŠ¶æ€ g_tk
-	 * 2.å‘é€1æ¬¡httpè¯·æ±‚
+	 * 1.ĞèÒªµÇÂ¼×´Ì¬ g_tk
+	 * 2.·¢ËÍ1´ÎhttpÇëÇó
 	 * 
-	 * @param curkey è¯´è¯´ID  example:7b6eb61aa5616f52da7c0b00
+	 * @param curkey ËµËµID  example:7b6eb61aa5616f52da7c0b00
 	 * 
 	 */
 	public void praise(String curkey){
@@ -235,6 +240,4 @@ public class Bihu extends HttpService{
 	public void setG_tk(String g_tk) {
 		this.g_tk = g_tk;
 	}
-	
-	
 }

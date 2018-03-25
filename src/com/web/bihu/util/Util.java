@@ -26,7 +26,7 @@ public class Util {
 	/** 格式小时 */
 	public static final SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss");
 	
-	/** 获取项目的根路径 **/
+	/** 获取项目的根路径  **/
 	public static String root;
 
 	static{
@@ -96,6 +96,7 @@ public class Util {
 		}
 		return content;
 	}
+	
 	/**
 	 * 计算，现在离下一个时间还有多少毫秒
 	 * 
@@ -134,7 +135,7 @@ public class Util {
 		
 		int $i = 0;
 		for(String v : str ){
-			fill = fill.replace("{"+$i+++"}", v);
+			fill = fill.replace("{"+ $i++ +"}", v);
 		}
 		return fill;
 	}

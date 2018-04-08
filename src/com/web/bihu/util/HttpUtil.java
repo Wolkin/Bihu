@@ -76,6 +76,7 @@ public class HttpUtil {
 	 * @return  合并后的Cookie
 	 */
 	public static String mergeCookies(String cookie, List<String> news){
+		System.out.println("HttpUtil类mergeCookies方法参数：cookie[" + cookie + "] | news[" + news.toString() + "]");
 		if( null == news)   //如果没有新的Cookie，则使用之前的Cookie
 			return cookie;
 		
@@ -83,15 +84,15 @@ public class HttpUtil {
 		StringBuffer sb = new StringBuffer();
 		Map<String,String> map  = new HashMap<String,String>();
 		for(String key : vs ){
-			map.put( key.replaceFirst("=.*$", ""),key );
+			map.put(key.replaceFirst("=.*$", ""), key);
 		}
 		
 		for(String key : news ){
-			map.put( key.replaceFirst("=.*$", ""),key );
+			map.put(key.replaceFirst("=.*$", ""), key);
 		}
 		
 		for(String key : map.keySet()){
-			sb.append( map.get(key)+";" );
+			sb.append(map.get(key)+";" );
 		}
 		return sb.toString();
 	}

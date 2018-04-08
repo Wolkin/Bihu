@@ -80,6 +80,8 @@ public class RegexUtil {
 	}
 
 	public static String replaceStartEnd(String v, String start, String end){
+		System.out.println("----" + v.replaceAll("[\r\n]*", ""));
+		System.out.println("----" + v.replaceAll("[\r\n]*", "").replaceFirst("^.*?"+start, ""));
 		return v.replaceAll("[\r\n]*", "").replaceFirst("^.*?"+start, "").replaceFirst(end+".*$", "");
 	}
 

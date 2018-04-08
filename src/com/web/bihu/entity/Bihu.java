@@ -78,7 +78,7 @@ public class Bihu extends HttpService{
 	 */
 	public int login(){
         //1.进入登录页面,获取Cookie
-        //http://ui.ptlogin2.qq.com/cgi-bin/login?hide_title_bar=1&low_login=0&qlogin_auto_login=1&no_verifyimg=1&link_target=blank&appid=549000912&style=12&target=self&s_url=http%3A//qzs.qq.com/qzone/v5/loginsucc.html?para=izone&pt_qr_app=%CA%D6%BB%FAQQ%BF%D5%BC%E4&pt_qr_link=http%3A//z.qzone.com/download.html&self_regurl=http%3A//qzs.qq.com/qzone/v6/reg/index.html&pt_qr_help_link=http%3A//z.qzone.com/download.html
+        //https://www.bihu.com/login
 		String $a = "https://www.bihu.com/login";
 		String $v = this.requestGet($a);
 		String content = $v;
@@ -98,9 +98,9 @@ public class Bihu extends HttpService{
         String $aid = $v;
         String $uin = this.uin;
         String $password = this.password;
-
+        System.out.println($login_sig + "-" + $aid + "-" + $uin + "-" + $password);
+        
         //3.获取登录验证信息
-        //http://check.ptlogin2.qq.com/check?regmaster=&uin=949102845&appid=549000912&js_ver=10051&js_type=1&login_sig=UcU**IJ7*Tb1oqFs9-NzQ7p187P4QhmPafwtJz5JE4zMXU1mnab0L5Z6uhEeSR4d&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&r=0.6652378559988166
         String $url = "https://www.bihu.com?regmaster=&uin={0}&appid={1}&js_ver={2}&js_type=1&login_sig={3}&u1=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&r={4}";
         $url = Util.fillString($url, $uin, $aid,"10051",$login_sig,new Random().nextDouble()+"");
         System.out.println("$url : " + $url);

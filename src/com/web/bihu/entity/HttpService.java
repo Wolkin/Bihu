@@ -59,6 +59,7 @@ public abstract class HttpService implements Serializable{
 	 * @return  请求获得的网页内容
 	 */
 	public String request(String urlStr, String type, SetHttpConnection sc, String params, String userAgent){
+		System.out.println("第三次请求访问【urlStr:" + urlStr + " | type:" + type + " | (SetHttpConnection)sc:" + sc + " | params:" + params  + " | userAgent:" + userAgent + "】！");
 		return SendRequestUtil.doRequest(urlStr, type, sc!=null ? sc : new SetHttpConnection() {
 			
 			@Override
@@ -93,6 +94,7 @@ public abstract class HttpService implements Serializable{
 	 * @return  请求获得的网页内容
 	 */
 	public String request(String urlStr, String type, SetHttpConnection sc, String params){
+		System.out.println("第二次请求访问【urlStr:" + urlStr + " | type:" + type + " | (SetHttpConnection)sc:" + sc + " | params:" + params  + "】！");
 		return request(urlStr, type, sc, params, this.userAgent);
 	}
 	
@@ -149,8 +151,10 @@ public abstract class HttpService implements Serializable{
 	 * @return  请求获得的网页内容
 	 */
 	public String requestGet(String urlStr){
+		System.out.println("第一次请求访问【urlStr:" + urlStr + "】！");
 		return request(urlStr, "get", null, null);
 	}
+	
 	/**
 	 * 一次Post请求<br>
 	 * <ul>

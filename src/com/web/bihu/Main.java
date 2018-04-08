@@ -15,7 +15,7 @@ import com.web.bihu.entity.Bihu;
 public class Main {
 	public static void main(String[] args) {
 		
-		Bihu bihu = new Bihu("jjwlove@126.com","jjwang1985");
+		Bihu bihu = new Bihu("13362889929","ma5870520557le");
 		bihu.login();                            //登录
 		System.out.println( bihu.getCookie() );  //获取登录Cookie
 		bihu.praise("7b6eb61a5cd674523b910000"); //说说赞
